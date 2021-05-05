@@ -110,15 +110,10 @@ body{
     .collapse-link{
         display: none;
         width: 100%;
-        
-        
+        flex-direction: column;
+        align-items: flex-start;     
     }
 
-    .collapse-link{
-        flex-direction: column;
-        align-items: flex-start;
-        
-    }
     .navbar-links ul{
     margin: 0;
     padding: 0;
