@@ -46,6 +46,10 @@ body{
     background-color: #555;
 }
 
+.collapse-link{
+        display: none;
+}
+
 .toggle-button{
     position: absolute;
     top: .75rem;
@@ -65,40 +69,108 @@ body{
     border-radius: 10px;
 }
 
+.circle{
+    
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    
+    width: 50px;
+    height: 10px;
+    margin: 10px;
+    shape-outside: circle();
+    clip-path: circle();
+    background: rgb(255, 0, 0);
+    
+    z-index: 1;
+ 
+    }
+
 @media (max-width: 550px){
     .toggle-button{
         display: flex;
     }
-
+    .circle{
+    position: absolute;
+    top: -.7rem;
+    display: flex;
+    
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    shape-outside: circle();
+    clip-path: circle();
+    background: rgb(0, 0, 0);
+    z-index: -2;
+    transition: .9s;
+ 
+    }
+    .circle.active{
+        width: 910px;
+        height: 910px;
+        transition: .9s;
+        z-index: -2;
+    }
     .navbar-links{
+        display: none;
+    }
+
+    .collapse-link{
         display: none;
         width: 100%;
         
+        
     }
 
-    .navbar{
+    .collapse-link{
         flex-direction: column;
         align-items: flex-start;
         
     }
-
     .navbar-links ul{
-        width: 100%;
-        flex-direction: column;
-        
-        
-        
-    }
-    .navbar-links li{
-        text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
     }
 
-    .navbar-links li a{
+    .collapse-link li{
+        list-style: none;
+        
+
+    }
+
+    .collapse-link a{
+        text-decoration: none;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 20px;
+        color: white;
+        padding: 1rem;
+        display: block;
+    }
+
+    
+
+
+    .collapse-link ul{
+        width: 30%;
+        flex-direction: column;
+        transition: 0.3s ease-in-out;
+        
+        
+    }
+    .collapse-link li{
+        text-align: left;
+        padding-bottom: 30px;
+    }
+
+    .collapse-link li a{
         padding: .5rem 1rem;
     }
 
-    .navbar-links.active {
+    .collapse-link.active {
         display: flex;
+        
         
     }
 }

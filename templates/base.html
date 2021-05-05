@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bg-styles.css">
     <title>{% block title %} {% endblock%}</title>
+    {% block styles %} {% endblock%}
 </head>
 <body>
     <nav class="navbar">
         <div class="brand-title">EDU-GO</div>
-        <a href="#" class="toggle-button">
+        
+       <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </a>
+       </a>
+    <div class="circle"></div>
+        
         <div class="navbar-links">
             <ul>
                 <li><a href="">Home</a></li>
@@ -24,6 +28,15 @@
             </ul>
         </div>
     </nav>
+
+    <div class="collapse-link"> 
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+
+    </div>
 
 
 
