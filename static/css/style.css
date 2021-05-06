@@ -94,13 +94,13 @@ body{
     .circle{
         display: flex;
         z-index: 1;
-        transition: .9s;
+        transition: .5s;
  
     }
     .circle.active{
         width: 910px;
         height: 910px;
-        transition: .9s;
+        transition: .5s;
         z-index: -2;
     }
     .navbar-links{
