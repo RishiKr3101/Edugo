@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{%block title%} Log In {% endblock %}
+
+{% block styles %}
+
+<style>
+
+</style>
+
+{% endblock%}
+
+
+
+{%block content%}
+
+<div id="LOGIN" align="center">
+    <br />
+    <form align="center" method="POST">
+        <p>Enter your E-Mail : <input type="email" placeholder="  e-mail" id="email" name="email" />
+            <br />
+        </p>
+        <p>Enter your Password : <input type="password" placeholder="  password..." id="password" name="password" /><br /></p>
+
+        <br>
+        <br>
+        <br>
+        <input type="submit" id="button" value="Log-in" /><br />
+        <p>OR</p>
+        
+    </form>
+    <a href="/signup">Want to create an account?<input type="submit" id="button" value="Sign-up" /><br /></a>
+</div>
+
+{% endblock %}

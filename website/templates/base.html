@@ -39,10 +39,32 @@
     </div>
 
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                
+                alert("error");
+                
+            </script>
+        {% endfor %}
+    {% endif %}
+
+    {%endwith%}
+
+
 
     {%block content%} {% endblock%}
 
     <script src="static/js/main.js"></script>
+
+
+    <script>
+        function myalert(message) {
+            alert(message);
+        }
+    </script>
 
     
 </body>
