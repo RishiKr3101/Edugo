@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,48 +10,51 @@
     <title>{% block title %} {% endblock%}</title>
     {% block styles %} {% endblock%}
 </head>
+
 <body>
     <nav class="navbar">
         <div class="brand-title">EDU-GO</div>
-        
-       <a href="#" class="toggle-button">
+
+        <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-       </a>
-    
-        
+        </a>
+
+
         <div class="navbar-links">
             <ul>
-                <li><a href="/">Log-in</a></li>
-                <li><a href="/signup">Sign-up</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
     <div class="circle"></div>
 
-    <div class="collapse-link"> 
+    <div class="collapse-link">
         <ul>
-            <li><a href="/">Log-in</a></li>
-            <li><a href="/signup">Sign-up</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
 
     </div>
-    
+
 
 
     {% with messages = get_flashed_messages(with_categories=true) %}
 
     {% if messages %}
-        {% for message in messages %}
-            <script>
-                
-                alert("error");
-                
-            </script>
-        {% endfor %}
+    {% for message in messages %}
+    <script>
+
+        alert("error");
+
+    </script>
+    {% endfor %}
     {% endif %}
 
     {%endwith%}
@@ -71,6 +75,7 @@
         }
     </script>
 
-    
+
 </body>
+
 </html>

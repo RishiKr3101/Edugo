@@ -8,6 +8,10 @@ body{
     padding: 0;
 }
 
+.main-content{
+
+}
+
 
 .navbar{
     display: flex;
@@ -15,6 +19,7 @@ body{
     align-items: center;
     background-color: black;
     color: white;
+    
     
 }
 
@@ -83,7 +88,7 @@ body{
     clip-path: circle();
     background: rgb(0, 0, 0);
     
-    z-index: 1;
+    
  
     } 
 
@@ -93,15 +98,25 @@ body{
     }
     .circle{
         display: flex;
-        z-index: 1;
+        
         transition: .5s;
  
     }
+    .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    
+    }
+
     .circle.active{
         width: 910px;
         height: 910px;
         transition: .5s;
-        z-index: -2;
+        z-index: -1;
+        
     }
     .navbar-links{
         display: none;
@@ -111,7 +126,8 @@ body{
         display: none;
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;     
+        align-items: flex-start;   
+        
     }
 
     .navbar-links ul{
@@ -161,4 +177,8 @@ body{
         
         
     }
+    .main-content.active{
+        display: none;
+
+}
 }
