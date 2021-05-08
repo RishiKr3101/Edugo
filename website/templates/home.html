@@ -16,7 +16,22 @@
 {%block content%} 
 
 <div class="main-container">
-    <h1>Welcome</h1>
+    <h1 align="centre">TimeLine</h1>
+
+    <form action="#" method="POST">
+        <textarea name="post" id="post" cols="30" rows="10" class="post-entry"></textarea>
+        <br>
+        <div align="centre">
+            <button type="submit" class="button-post">Post</button>
+        </div>
+    </form>
+    <br>
+    <ul class="post-timeline" id="notes">
+        {% for post in user.posts %}
+            <li>{{ post.data }}</li>
+        {% endfor %}
+    </ul>
+
 </div>
 
 {% endblock %}
