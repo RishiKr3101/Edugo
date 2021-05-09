@@ -4,19 +4,23 @@ from .models import User, Posts
 from . import db
 
 
+
 views = Blueprint('views', __name__)
 
 @views.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
+    
+    print(current_user)
     if request.method == 'POST':
         post = request.form.get('post')
 
         if len(post)<1:
-            return render_template("home.html")
+            return render_template("home.html", user=current_user)
         
         else:
             new_post = Posts(data=post, user_id = current_user.id)
+            
             db.session.add(new_post)
             db.session.commit()
 
