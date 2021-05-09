@@ -18,3 +18,13 @@ toggleButton.addEventListener('click', () => {
 toggleButton.addEventListener('click', () => {
     main_content.classList.toggle('active')
 })
+
+
+function RemovePost(PostId){
+    fetch('/remove-post',{
+        method: "POST",
+        body: JSON.stringify({ PostId: PostId}),
+    }).then((_res) => {
+        window.location.href = "/home";
+    });
+}

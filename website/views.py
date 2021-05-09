@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, redirect,request
+from flask import Blueprint, render_template, redirect,request, jsonify
 from flask_login import login_required, current_user
 from .models import User, Posts
 from . import db
-
+import json
 
 
 views = Blueprint('views', __name__)
@@ -27,3 +27,17 @@ def home():
 
     
     return render_template("home.html", user=current_user)
+
+
+
+@views.route('/remove-post', methods= ['POST'])
+def remove_post():
+    post = json.loads(request.data)
+    postId = post['PostId']
+    post = Posts.query.get(postId)
+    if post:
+        if post.user_id == current_user.id:
+            db.session.delete(post)
+            db.session.commit()
+    
+    return jsonify({})
