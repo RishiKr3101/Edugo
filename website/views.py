@@ -30,6 +30,14 @@ def home():
 
 
 
+@views.route('/feeds')
+@login_required
+def timeline():
+    
+    return render_template("timeline.html", user=current_user, posts=Posts.query.all(), user_list=User.query.all())
+
+
+
 @views.route('/remove-post', methods= ['POST'])
 def remove_post():
     post = json.loads(request.data)
