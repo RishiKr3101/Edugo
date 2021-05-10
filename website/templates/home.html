@@ -57,13 +57,16 @@
 <div class="main-container">
     <div class="heading">
         <h1 align="centre">Add Post</h1>
-        <form method="POST">
-            <textarea name="post" id="post" cols="60" rows="5" class="post-entry"></textarea>
+        <form method="POST" onsubmit="addNewLines()">
+            <textarea name="post" id="post-entry" cols="60" rows="5" class="post-entry" style="display: none;" ></textarea>
             <br>
+            <textarea id="entry-post" cols="60" rows="5" class="post-entry-visible"></textarea>
             <div align="centre">
                 <button type="submit" class="button-post">Post</button>
             </div>
         </form>
+        <br>
+        
     
     </div>
    
@@ -96,4 +99,16 @@
 
 </div>
 
+
+<script>
+    function addNewLines() {
+        text = document.getElementById("entry-post").value;
+        text = text.replace(/  /g, " [sp] [sp] ");
+        text = text.replace(/\n/g, " [n1] ");
+        document.getElementById("post-entry").value = text;
+        return false;
+    }
+</script>
 {% endblock %}
+
+

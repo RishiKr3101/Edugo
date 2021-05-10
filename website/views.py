@@ -14,6 +14,9 @@ def home():
     print(current_user)
     if request.method == 'POST':
         post = request.form.get('post')
+        post=post.replace("[sp]", "&nbsp;")
+        post=post.replace("[n1]", "\n")
+        print(post)
 
         if len(post)<1:
             return render_template("home.html", user=current_user)
