@@ -64,6 +64,11 @@ def like_post():
     
     postId = like['PostId']
     
+    posts=Posts.query.all()
+    for post in posts :
+        if post.id == postId:
+            post.no_of_likes += 1
+    
     
     like = Likes(user=current_user.id , post_id= postId)
     
