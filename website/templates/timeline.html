@@ -86,13 +86,14 @@
                     <div class="date">~ {{post.date}}</div>
                     <br>
                     
-
+                    
+                    
                     <div class="post-interact">
                         {% if post.id in likes %}
-                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_inactive.png" width="23" height="23" alt=""></button>
+                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"> {{post.likes}} <img src="static/like_inactive.png" width="23" height="23" alt=""></button>
                         
                         {% else %}
-                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_active.png" width="23" height="23" alt=""></button>
+                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"> {{post.likes}} <img src="static/like_active.png" width="23" height="23" alt=""></button>
 
                         {%endif%}
                     </div>
