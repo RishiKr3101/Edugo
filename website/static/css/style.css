@@ -8,6 +8,20 @@ body{
     padding: 0;
 }
 
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 40px;
+    padding-inline-start: 40px;
+
+    
+    
+}
+
 .main-content{
 
 }
@@ -28,7 +42,7 @@ body{
     margin: .5rem;
 }
 
-.navbar-links ul{
+.navbar-links ul {
     margin: 0;
     padding: 0;
     display: flex;
@@ -92,13 +106,13 @@ body{
  
     } 
 
-    .post-timeline ul{
-        margin: 5;
-        padding: 5;
-        
-    }
+    
 
 .post-timeline li{
+        left: 0;
+        right: 0;
+        top: 10%;
+        margin: 0 auto;
         text-decoration: none;
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 24px;
@@ -109,7 +123,10 @@ body{
         display: block;
 }
 
-
+#posts{
+    left: 0;
+    right: 0;
+}
 
 
 

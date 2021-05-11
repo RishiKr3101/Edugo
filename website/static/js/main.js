@@ -28,3 +28,13 @@ function RemovePost(PostId){
         window.location.href = "/home";
     });
 }
+
+function LikePost(PostId){
+    fetch('/like-post',{
+        method: "POST",
+        body: JSON.stringify({PostId: PostId}),
+    }).then((__res) => {
+        window.location.href = "/feeds"
+    });
+
+}

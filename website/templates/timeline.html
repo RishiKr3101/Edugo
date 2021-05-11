@@ -73,9 +73,9 @@
         <ul id="posts">
             {% for post in posts %}
                 <li>
-                    {% for user in user_list %}
-                    {% if post.user_id == user.id %}
-                    <div id="username">{{ user.first_name }} :</div>
+                    {% for users in user_list %}
+                    {% if post.user_id == users.id %}
+                    <div id="username">{{ users.first_name }} :</div>
                     
                     {% endif %}
                     {% endfor %}
@@ -84,6 +84,18 @@
                     <br>
                     <br>
                     <div class="date">~ {{post.date}}</div>
+                    <br>
+                    
+
+                    <div class="post-interact">
+                        {% if post.id in likes %}
+                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_inactive.png" width="23" height="23" alt=""></button>
+                        
+                        {% else %}
+                            <button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_active.png" width="23" height="23" alt=""></button>
+
+                        {%endif%}
+                    </div>
 
 
                 </li>

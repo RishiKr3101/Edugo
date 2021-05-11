@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect,request, jsonify
 from flask_login import login_required, current_user
-from .models import User, Posts
+from .models import User, Posts, Likes
 from . import db
 import json
 
@@ -36,8 +36,12 @@ def home():
 @views.route('/feeds')
 @login_required
 def timeline():
+    posts_liked=[]
+    for likes in Likes.query.all() :
+        if current_user.id == likes.user :
+            posts_liked.append(likes.post_id)
     
-    return render_template("timeline.html", user=current_user, posts=Posts.query.all(), user_list=User.query.all())
+    return render_template("timeline.html", user=current_user, posts=Posts.query.all(), user_list=User.query.all(), likes= posts_liked)
 
 
 
@@ -50,5 +54,20 @@ def remove_post():
         if post.user_id == current_user.id:
             db.session.delete(post)
             db.session.commit()
+    
+    return jsonify({})
+
+
+@views.route('/like-post', methods= ['POST'])
+def like_post():
+    like = json.loads(request.data)
+    
+    postId = like['PostId']
+    
+    
+    like = Likes(user=current_user.id , post_id= postId)
+    
+    db.session.add(like)
+    db.session.commit()
     
     return jsonify({})

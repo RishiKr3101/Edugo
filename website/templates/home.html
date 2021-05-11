@@ -46,6 +46,7 @@
 
 }
 
+
 </style>
 
 {% endblock%}
@@ -56,12 +57,12 @@
 
 <div class="main-container">
     <div class="heading">
-        <h1 align="centre">Add Post</h1>
+        <h1 align="center">Add Post</h1>
         <form method="POST" onsubmit="addNewLines()">
             <textarea name="post" id="post-entry" cols="60" rows="5" class="post-entry" style="display: none;" ></textarea>
             <br>
             <textarea id="entry-post" cols="60" rows="5" class="post-entry-visible"></textarea>
-            <div align="centre">
+            <div align="center">
                 <button type="submit" class="button-post">Post</button>
             </div>
         </form>
@@ -76,7 +77,7 @@
     
     <br>
     <div class="post-timeline">
-    <ul id="posts">
+    <ul  id="posts">
         {% for post in user.posts %}
         
             <li>
