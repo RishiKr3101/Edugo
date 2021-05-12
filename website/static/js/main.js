@@ -38,3 +38,13 @@ function LikePost(PostId){
     });
 
 }
+
+function DislikePost(PostId){
+    fetch('/dislike-post',{
+        method: "POST",
+        body: JSON.stringify({PostId: PostId}),
+    }).then((__res) => {
+        window.location.href = "/feeds"
+    });
+
+}

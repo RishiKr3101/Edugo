@@ -57,12 +57,14 @@
 
 <div class="main-container">
     <div class="heading">
+        
         <h1 align="centre">Timeline</h1>
         
-        <br>
-        <br>
+        
 
     </div>
+    <br>
+    <br>
 
 
 
@@ -76,9 +78,9 @@
                     {% for users in user_list %}
                     {% if post.user_id == users.id %}
                     {% if user.profile_pic == None %}
-                    <div id="username"><img src="static/logo.png" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.first_name }} :</div>
+                    <div id="username"><img src="static/logo.png" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.username }} :</div>
                     {% else %}
-                    <div id="username"><img src="user.profile_pic" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.first_name }} </div>
+                    <div id="username"><img src="user.profile_pic" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.username }} </div>
                     
                     {% endif %}
                     {% endif %}
@@ -94,7 +96,7 @@
                     
                     <div class="post-interact">
                         {% if post.id in likes %}
-                            {{post.no_of_likes}} &nbsp;<button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_inactive.png" width="23" height="23" alt=""></button>
+                            {{post.no_of_likes}} &nbsp;<button style="background-color: rgba(240, 248, 255, 0);" onClick="DislikePost({{post.id}} , {{user.id}})"><img src="static/like_inactive.png" width="23" height="23" alt=""></button>
                         
                         {% else %}
                             {{post.no_of_likes}}&nbsp;<button style="background-color: rgba(240, 248, 255, 0);" onClick="LikePost({{post.id}} , {{user.id}})"><img src="static/like_active.png" width="23" height="23" alt=""></button>

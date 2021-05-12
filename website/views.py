@@ -61,6 +61,7 @@ def remove_post():
 
 @views.route('/like-post', methods= ['POST'])
 def like_post():
+    
     like = json.loads(request.data)
     
     postId = like['PostId']
@@ -75,5 +76,28 @@ def like_post():
     
     db.session.add(like)
     db.session.commit()
+    
+    return jsonify({})
+
+
+@views.route('/dislike-post', methods= ['POST'])
+def dislike_post():
+    
+    dislike = json.loads(request.data)
+    
+    postId = dislike['PostId']
+    
+    posts=Posts.query.all()
+    for post in posts :
+        if post.id == postId:
+            for like in post.likes :
+                if(current_user.id == like.user):
+                    db.session.delete(like)
+                    post.no_of_likes -= 1
+                    db.session.commit()
+            
+    
+    
+    
     
     return jsonify({})
