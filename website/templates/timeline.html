@@ -75,8 +75,12 @@
                 <li>
                     {% for users in user_list %}
                     {% if post.user_id == users.id %}
-                    <div id="username">{{ users.first_name }} :</div>
+                    {% if user.profile_pic == None %}
+                    <div id="username"><img src="static/logo.png" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.first_name }} :</div>
+                    {% else %}
+                    <div id="username"><img src="user.profile_pic" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.first_name }} </div>
                     
+                    {% endif %}
                     {% endif %}
                     {% endfor %}
                     

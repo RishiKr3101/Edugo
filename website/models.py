@@ -3,7 +3,7 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy import PickleType
 from sqlalchemy.dialects.sqlite import BLOB
-
+from flask import Flask, render_template, url_for
 
 class Likes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,4 +28,5 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
+    profile_pic = db.Column(db.BLOB)
     posts = db.relationship('Posts', backref='author', lazy=True)

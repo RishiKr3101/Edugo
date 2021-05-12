@@ -33,6 +33,7 @@ def signup():
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        profile_pic= request.files.get("profilepic")
 
         user = User.query.filter_by(email= email).first()
         if user:
@@ -47,7 +48,7 @@ def signup():
         elif len(password1) <7:
             flash('password short', category='error')
         else:
-            new_user = User(email=email, first_name=first_name, password= generate_password_hash(password1, method='sha256'))
+            new_user = User(email=email, first_name=first_name, profile_pic=profile_pic, password= generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             user = User.query.filter_by(email= email).first()

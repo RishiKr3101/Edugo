@@ -37,6 +37,7 @@ def home():
 @login_required
 def timeline():
     posts_liked=[]
+    print(current_user.profile_pic)
     for likes in Likes.query.all() :
         if current_user.id == likes.user :
             posts_liked.append(likes.post_id)
