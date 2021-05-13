@@ -3,6 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from base64 import b64encode
 
 auth = Blueprint('auth', __name__)
 
@@ -34,7 +35,11 @@ def signup():
         username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        profile_pic= request.files.get("profilepic")
+        profile_pic= request.files.getlist("profilepic")
+        if profile_pic:
+            User.profile_pic=profile_pic[0].file.read(), 
+
+        
 
         user = User.query.filter_by(email= email).first()
         if user:
@@ -49,7 +54,7 @@ def signup():
         elif len(password1) <7:
             flash('password short', category='error')
         else:
-            new_user = User(email=email, username=username  , first_name=first_name, profile_pic=profile_pic, password= generate_password_hash(password1, method='sha256'))
+            new_user = User(email=email, username=username  , first_name=first_name, password= generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             user = User.query.filter_by(email= email).first()

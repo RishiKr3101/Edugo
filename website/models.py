@@ -30,5 +30,5 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     username = db.Column(db.String(150), unique=True)
-    profile_pic = db.Column(db.BLOB)
+    profile_pic = db.Column(db.LargeBinary)
     posts = db.relationship('Posts', backref='author', lazy=True)

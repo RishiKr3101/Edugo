@@ -48,3 +48,10 @@ function DislikePost(PostId){
     });
 
 }
+
+imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    dispdp.src = URL.createObjectURL(file)
+  }
+}

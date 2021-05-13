@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect,request, jsonify
+from flask import Blueprint, app, render_template, redirect,request, jsonify, make_response
 from flask_login import login_required, current_user
 from .models import User, Posts, Likes
 from . import db
@@ -97,7 +97,14 @@ def dislike_post():
                     db.session.commit()
             
     
-    
+
     
     
     return jsonify({})
+
+
+
+@views.route('/event/<int:id>/logo')
+def event_logo(id):
+    event = User.query.get_or_404(id)
+    return app.response_class(event.profile_pic, mimetype='application/octet-stream')
