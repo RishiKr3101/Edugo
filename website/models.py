@@ -6,6 +6,15 @@ from sqlalchemy import PickleType
 from sqlalchemy.dialects.sqlite import BLOB
 from flask import Flask, render_template, url_for
 
+class Comments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user= db.Column(db.Integer)
+    data = db.Column(db.String(10000))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+
 class Likes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user= db.Column(db.Integer)
@@ -22,6 +31,7 @@ class Posts(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     no_of_likes = db.Column(db.Integer, default= 0)
     likes = db.relationship('Likes', backref='author', lazy=True)
+    comments = db.relationship('Comments', backref='author', lazy=True)
 
 
 class User(db.Model, UserMixin):
