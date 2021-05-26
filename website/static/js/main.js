@@ -48,6 +48,24 @@ function DislikePost(PostId){
     });
 
 }
+function Comment(PostId, data){
+    fetch('/comment',{
+        method: "POST",
+        body: JSON.stringify({PostId: PostId}, {data: data}),
+    }).then((__res) => {
+        window.location.href = "/feeds"
+    });
+
+}
+function remove_comment(PostId){
+    fetch('/remove-comment',{
+        method: "POST",
+        body: JSON.stringify({PostId: PostId}),
+    }).then((__res) => {
+        window.location.href = "/feeds"
+    });
+
+}
 
 imgInp.onchange = evt => {
   const [file] = imgInp.files

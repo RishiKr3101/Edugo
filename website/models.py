@@ -30,6 +30,7 @@ class Posts(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     no_of_likes = db.Column(db.Integer, default= 0)
+    no_of_comments = db.Column(db.Integer, default= 0)
     likes = db.relationship('Likes', backref='author', lazy=True)
     comments = db.relationship('Comments', backref='author', lazy=True)
 

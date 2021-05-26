@@ -1,6 +1,6 @@
 from flask import Blueprint, app, render_template, redirect,request, jsonify, make_response
 from flask_login import login_required, current_user
-from .models import User, Posts, Likes
+from .models import Comments, User, Posts, Likes
 from . import db
 import json
 
@@ -33,9 +33,11 @@ def home():
 
 
 
-@views.route('/feeds')
+@views.route('/feeds', methods= ['GET','POST'])
 @login_required
 def timeline():
+    
+
     posts_liked=[]
     print(current_user.profile_pic)
     for likes in Likes.query.all() :
@@ -102,7 +104,48 @@ def dislike_post():
     
     return jsonify({})
 
+@views.route('/comment', methods= ['POST'])
+def comment():
+    
+    comments = json.loads(request.data)
+    
+    postId, data = comments['PostId'] , comments['data']
+    
+    posts=Posts.query.all()
+    for post in posts :
+        if post.id == postId:
+            post.no_of_comments += 1
+    
+    
+    comment = Comments(user=current_user.id , data= data , post_id= postId)
+    
+    db.session.add(comment)
+    db.session.commit()
+    
+    return jsonify({})
 
+
+@views.route('/remove-comment', methods= ['POST'])
+def remove_comment():
+    
+    comment = json.loads(request.data)
+    
+    postId = comment['PostId']
+    
+    posts=Posts.query.all()
+    for post in posts :
+        if post.id == postId:
+            for comment in post.comments :
+                if(current_user.id == comment.user):
+                    db.session.delete(comment)
+                    post.no_of_comments -= 1
+                    db.session.commit()
+            
+    
+
+    
+    
+    return jsonify({})
 
 @views.route('/event/<int:id>/logo')
 def event_logo(id):
