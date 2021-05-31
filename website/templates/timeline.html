@@ -77,12 +77,10 @@
                 <li>
                     {% for users in user_list %}
                     {% if post.user_id == users.id %}
-                    {% if user.profile_pic == None %}
-                    <div id="username"><img src="static/logo.png" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.username }} :</div>
-                    {% else %}
-                    <div id="username"><img src="{{ url_for('event_logo', id=users.id) }}" width="24" height="24" alt="{{user.first_name}}'s profile_picture">{{ users.username }} </div>
                     
-                    {% endif %}
+                    <div id="username"><img src="data:;base64,{{ url_for('views.profilepic', id=users.id)}}" width="24" height="24" alt="{{users.first_name}}'s profile_picture">{{ users.username }} </div>
+                    
+                    
                     {% endif %}
                     {% endfor %}
                     

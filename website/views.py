@@ -1,9 +1,9 @@
-from flask import Blueprint, app, render_template, redirect,request, jsonify, make_response
+from flask import Blueprint, app, render_template, redirect,request, jsonify, make_response, Response
 from flask_login import login_required, current_user
 from .models import Comments, User, Posts, Likes
 from . import db
 import json
-
+from base64 import b64encode
 
 views = Blueprint('views', __name__)
 
@@ -39,7 +39,7 @@ def timeline():
     
 
     posts_liked=[]
-    print(current_user.profile_pic)
+    
     for likes in Likes.query.all() :
         if current_user.id == likes.user :
             posts_liked.append(likes.post_id)
@@ -147,7 +147,9 @@ def remove_comment():
     
     return jsonify({})
 
-@views.route('/event/<int:id>/logo')
-def event_logo(id):
-    event = User.query.get_or_404(id)
-    return app.response_class(event.profile_pic, mimetype='application/octet-stream')
+@views.route('/profilepic/<int:id>')
+def profilepic(id):
+    event = User.query.filter_by(id=id).first()
+    print("hey")
+    image=b64encode(event.profile_pic)
+    return (image)

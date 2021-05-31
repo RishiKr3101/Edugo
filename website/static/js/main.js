@@ -17,7 +17,7 @@ toggleButton.addEventListener('click', () => {
 
 toggleButton.addEventListener('click', () => {
     main_content.classList.toggle('active')
-})
+})                                         
 
 
 function RemovePost(PostId){
