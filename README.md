@@ -1,2 +1,2 @@
 # EDUGO
-## Website to unit all students
+## Website to unit all students.
